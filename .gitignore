@@ -1,0 +1,9 @@
+venv/
+data/cmb_ov/
+data/nifti/
+outputs/embeddings/*.npy
+outputs/embeddings/tcga_ov/
+outputs/embeddings/cmb_ov/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

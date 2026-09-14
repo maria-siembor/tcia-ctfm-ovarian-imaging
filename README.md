@@ -79,3 +79,17 @@ pip install -r requirements.txt
 
 Scripts in `scripts/` are numbered in pipeline order. Run from the project
 root.
+
+References
+
+TCIA (data repository): Clark K, Vendt B, Smith K, et al. The Cancer Imaging Archive (TCIA): Maintaining and Operating a Public Information Repository. Journal of Digital Imaging. 2013;26(6):1045-1057. https://doi.org/10.1007/s10278-013-9622-7
+
+TCGA-OV (primary dataset): Holback C, Jarosz R, Prior F, et al. The Cancer Genome Atlas Ovarian Cancer Collection (TCGA-OV) (Version 4) [Data set]. The Cancer Imaging Archive. 2016. https://doi.org/10.7937/K9/TCIA.2016.NDO1MDFQ
+
+CLOVAR subtype labels (TCGA-OV-Radiogenomics): Vargas HA, Huang EP, Lakhman Y, et al. Radiogenomics of High-Grade Serous Ovarian Cancer: Multireader Multi-Institutional Study from the Cancer Genome Atlas Ovarian Cancer Imaging Research Group. Radiology. 2017;285(2):482-492. https://doi.org/10.1148/radiol.2017161870
+
+CMB-OV (held-out generalization dataset): Cancer Moonshot Biobank. Cancer Moonshot Biobank Ovarian Carcinoma Cancer Collection (CMB-OV) [Data set]. The Cancer Imaging Archive. [DOI: see https://www.cancerimagingarchive.net/collection/cmb-ov/ for the current citation]
+
+CT-FM (foundation model): Pai S, Hadzic I, Bontempi D, et al. Vision Foundation Models for Computed Tomography. 2025. Model weights: project-lighter/ct_fm_feature_extractor (HuggingFace). Code: https://github.com/project-lighter/lighter
+
+Series selection methodology: Rich J, Kang R, Jin D, Subramanian S, Duddalwar V, Pachter L. TCIA Radiology Image Processing for AI and Radiomics. medRxiv. 2026. https://doi.org/10.64898/2026.06.15.26354651

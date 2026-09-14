@@ -1,0 +1,18 @@
+# Documentation of the preprocessing parameters actually used in this
+# project, matched to CT-FM's own official pretraining spec (see
+# project-lighter/ct_fm_feature_extractor HuggingFace model card).
+
+orientation: SPL         
+
+hu_clip:
+  min: -1024
+  max: 2048
+  rescale_to: [0, 1]     
+
+crop_foreground: true     
+
+resize_target: [160, 160, 160]
+
+pretraining_reference_spec:
+  slice_thickness_mm: 3
+  in_plane_resolution_mm: 1

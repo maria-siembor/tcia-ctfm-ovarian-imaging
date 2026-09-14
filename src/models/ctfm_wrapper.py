@@ -1,5 +1,8 @@
-"""Load CT-FM and extract embeddings from preprocessed NIfTI volumes."""
+"""Load CT-FM and extract embeddings from preprocessed NIfTI volumes.
+Preprocessing parameters are loaded from configs/preprocessing.yaml,
+see that file for citations and rationale behind each value."""
 
+import yaml
 import torch
 from lighter_zoo import SegResEncoder
 from monai.transforms import (
@@ -9,14 +12,15 @@ from monai.transforms import (
 
 _model = None
 _preprocess = None
+_config = None
 
-# Bounds memory: without this, a large volume (e.g. 597 slices) blows up
-# to ~18GB+ during the forward pass since the whole volume is encoded at
-# once (no sliding window in this simple usage path). Resize to a fixed,
-# moderate size instead, we only need one pooled embedding per scan, not
-# pixel-level output, so some resolution loss here is an acceptable
-# tradeoff given the CPU memory constraint.
-RESIZE_TARGET = (160, 160, 160)
+
+def _get_config():
+    global _config
+    if _config is None:
+        with open("configs/preprocessing.yaml") as f:
+            _config = yaml.safe_load(f)
+    return _config
 
 
 def _get_model():
@@ -30,13 +34,20 @@ def _get_model():
 def _get_preprocess():
     global _preprocess
     if _preprocess is None:
+        cfg = _get_config()
         _preprocess = Compose([
             LoadImage(ensure_channel_first=True),
             EnsureType(),
-            Orientation(axcodes="SPL"),
-            ScaleIntensityRange(a_min=-1024, a_max=2048, b_min=0, b_max=1, clip=True),
-            CropForeground(),
-            Resize(spatial_size=RESIZE_TARGET),
+            Orientation(axcodes=cfg['orientation']),
+            ScaleIntensityRange(
+                a_min=cfg['hu_clip']['min'],
+                a_max=cfg['hu_clip']['max'],
+                b_min=cfg['hu_clip']['rescale_to'][0],
+                b_max=cfg['hu_clip']['rescale_to'][1],
+                clip=True,
+            ),
+            CropForeground() if cfg['crop_foreground'] else lambda x: x,
+            Resize(spatial_size=tuple(cfg['resize_target'])),
         ])
     return _preprocess
 

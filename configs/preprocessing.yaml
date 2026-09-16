@@ -1,6 +1,5 @@
 # Documentation of the preprocessing parameters used in this
-# project, matched to CT-FM's own official pretraining spec (see
-# project-lighter/ct_fm_feature_extractor HuggingFace model card).
+# project, matched to CT-FM's own official pretraining spec.
 
 orientation: SPL         
 

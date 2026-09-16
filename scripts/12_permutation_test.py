@@ -19,7 +19,6 @@ pipe = Pipeline([
     ('clf', SVC(kernel='linear', C=0.1))
 ])
 
-# Real result
 real_score = cross_val_score(pipe, X, y, cv=cv, scoring='accuracy').mean()
 print(f"Real accuracy: {real_score:.3f}")
 

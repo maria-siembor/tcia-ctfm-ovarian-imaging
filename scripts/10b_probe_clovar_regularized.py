@@ -17,7 +17,6 @@ cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 majority_baseline = max(Counter(y).values()) / len(y)
 print(f"Majority-class baseline: {majority_baseline:.3f}\n")
 
-# Try a range of regularization strengths (lower C = stronger regularization)
 for C in [0.001, 0.01, 0.1, 1.0]:
     pipe = Pipeline([
         ('scale', StandardScaler()),

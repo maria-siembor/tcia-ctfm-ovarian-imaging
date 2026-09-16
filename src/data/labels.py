@@ -27,7 +27,7 @@ def get_hard_label(row):
     categories = ['Differentiated', 'Immunoreactive', 'Mesenchymal', 'Proliferative']
     matches = [cat for cat in categories if str(row[f'{cat}Category']).strip().upper() == 'TRUE']
     if len(matches) != 1:
-        return None  # 0 matches: unclassified; >1 match: ambiguous/tied
+        return None 
     return matches[0]
 
 

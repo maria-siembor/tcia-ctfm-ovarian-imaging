@@ -22,14 +22,14 @@ two datasets:
 
 1. Download from TCIA (`tcia_utils`)
 2. Series selection: metadata filtering (Rich et al. 2026 methodology) +
-   geometric validation (orientation, slice spacing) — see
+   geometric validation (orientation, slice spacing); see
    `SERIES_SELECTION_LOG.md` for the full, evidence-based process,
    including real bugs found and fixed during development
 3. DICOM → NIfTI conversion
 4. CT-FM embedding extraction (`lighter_zoo`, 512-dim vectors)
 5. CLOVAR subtype labels joined from TCGA-OV-Radiogenomics
 6. Zero-shot linear probe, classifier comparison, permutation testing,
-   SHAP interpretability — see `RESULTS_LOG.md` for full results
+   SHAP interpretability; see `RESULTS_LOG.md` for full results
 
 ## Key results
 

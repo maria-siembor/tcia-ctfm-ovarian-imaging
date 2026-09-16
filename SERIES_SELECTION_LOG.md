@@ -1,4 +1,4 @@
-# TCGA-OV Series Selection — Stage A Log
+# TCGA-OV Series Selection: Stage A Log
 
 ## Method
 Metadata-only filtering of `SeriesDescription` against an exclusion keyword
@@ -8,15 +8,15 @@ per patient retained: the surviving candidate with the highest `ImageCount`.
 
 ## Sources
 - Rich et al. 2026, "TCIA Radiology Image Processing for AI and Radiomics",
-  medRxiv DOI 10.64898/2026.06.15.26354651 — base exclusion keyword list
+  medRxiv DOI 10.64898/2026.06.15.26354651 base exclusion keyword list
   (localizer, scout, topogram, smart prep, mip, etc.), demonstrated on
   TCGA-KIRC, same TCIA multi-institutional heterogeneity as TCGA-OV.
-- Pai et al. 2025 (CT-FM paper), Supplementary S1 — `ImageCount >= 50`
+- Pai et al. 2025 (CT-FM paper), Supplementary S1:`ImageCount >= 50`
   threshold, matched to CT-FM's own pretraining inclusion criteria since
   our task benchmarks that specific model.
 - `BodyPartExamined == 'OVARY'` confirmed uniform across all 820 series
   (checked directly), so anatomy keywords were NOT required in
-  `SeriesDescription` — many legitimate series omit them since body part
+  `SeriesDescription` many legitimate series omit them since body part
   is already established at the collection level.
 
 ## Key decisions made during validation against real data

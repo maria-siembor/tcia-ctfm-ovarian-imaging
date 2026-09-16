@@ -25,11 +25,10 @@ def download_clovar_labels(out_dir: str = "data/labels"):
 def get_hard_label(row):
     """Convert the 4 boolean category columns into a single subtype label."""
     categories = ['Differentiated', 'Immunoreactive', 'Mesenchymal', 'Proliferative']
-    for cat in categories:
-        col = f'{cat}Category'
-        if str(row[col]).strip().upper() == 'TRUE':
-            return cat
-    return None  # ambiguous / ties with the released category columns
+    matches = [cat for cat in categories if str(row[f'{cat}Category']).strip().upper() == 'TRUE']
+    if len(matches) != 1:
+        return None  # 0 matches: unclassified; >1 match: ambiguous/tied
+    return matches[0]
 
 
 def join_with_selected_patients(dataset_slug: str = "tcga_ov"):

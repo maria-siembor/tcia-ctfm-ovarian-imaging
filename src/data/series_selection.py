@@ -1,15 +1,15 @@
 """
-Series selection, Stage A (metadata-only).
+Series selection(metadata-only).
 Refs: Rich et al. 2026 (medRxiv 10.64898/2026.06.15.26354651) for exclusion
 keywords; CT-FM paper Supplementary S1 for ImageCount >= 50 threshold.
 
-Junk-pattern exclusion checks SeriesDescription ONLY, never ProtocolName.
+Junk-pattern exclusion checks SeriesDescription, never ProtocolName.
 ProtocolName describes the whole exam and can contain words like "survey"
 or "lung" as part of an institution's naming convention without meaning
 this specific series is junk (confirmed via TCGA-13-0724, TCGA-13-0793).
 
-Blank SeriesDescription is NOT excluded, real series can lack a label
-(confirmed via TCGA-24-1614/1616). "Recon N:" prefix is NOT excluded,
+Blank SeriesDescription isn't excluded, real series can lack a label
+(confirmed via TCGA-24-1614/1616). "Recon N:" prefix isn't excluded,
 some sites use it as a normal save-name for primary series, not a marker
 of a derived copy (confirmed via TCGA-13-1412).
 

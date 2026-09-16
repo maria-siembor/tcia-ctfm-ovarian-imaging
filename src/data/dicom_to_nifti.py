@@ -10,10 +10,6 @@ import SimpleITK as sitk
 
 @contextlib.contextmanager
 def capture_c_stderr():
-    """Redirect the OS-level stderr file descriptor (not just Python's
-    sys.stderr) to a temp file, so we can capture ITK's C++-level warnings.
-    contextlib.redirect_stderr alone doesn't work for this, ITK writes
-    below the Python layer."""
     stderr_fd = sys.stderr.fileno()
     saved_stderr_fd = os.dup(stderr_fd)
     tmp = tempfile.TemporaryFile(mode='w+')
@@ -72,7 +68,6 @@ def convert_series(dataset_slug: str, limit: int = None):
             results.append({'PatientID': patient_id, 'status': f'error: {e}', 'size': None,
                              'itk_nonuniformity': None})
 
-        # save progress every 10 patients, so an interrupt doesn't lose everything
         if (i + 1) % 10 == 0:
             pd.DataFrame(results).to_csv(log_path, index=False)
             print(f"  ...progress saved at {i + 1}/{len(df)}")

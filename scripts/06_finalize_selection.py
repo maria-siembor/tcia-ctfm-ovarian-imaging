@@ -1,6 +1,6 @@
 import pandas as pd
 
-NONUNIFORMITY_THRESHOLD = 20  # see SERIES_SELECTION_LOG.md, Stage C
+NONUNIFORMITY_THRESHOLD = 20 
 
 selected = pd.read_csv('data/series_lists/tcga_ov_stage_a_selected.csv')
 conversion_log = pd.read_csv('data/series_lists/tcga_ov_conversion_log.csv')
